@@ -1,8 +1,8 @@
-<h1 id="tableLabel">Augen book store</h1>
+<h1 id="tableLabel" class="text-center">Augen book store</h1>
 
 <p *ngIf="!books"><em>Loading...</em></p>
 
-<div class="container">
+<div class="container" *ngIf="books">
   <form #userForm="ngForm">
     <div class="form-group">
       <div class="input-group mb-3">
@@ -14,24 +14,29 @@
     </div>
   </form>
 
-  <div class="bd-example">
-    <div class="card-group">
-      <div class="card mb-3" *ngFor="let bookItem of books">
-        <svg class="bd-placeholder-img card-img-top" width="100" height="100"
-             xmlns="http://www.w3.org/2000/svg"
-             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#868e96"></rect>
-          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-        </svg>
-        <div class="card-body">
-          <p class="card-text">{{ bookItem.title }}</p>
-          <p class="card-text">{{ bookItem.authors ? bookItem.authors[0] : '' }} - {{ bookItem.publishedDate }}</p>
-          <button type="button" class="btn btn-primary" (click)="openModal(bookdetailtemplate,
-                  bookItem.title,
-                  bookItem.authors ? bookItem.authors[0] : '',
-                  bookItem.publishedDate,
-                  bookItem.subtitle)">Detail</button>
+  <div class="container">
+    <div class="row" id="contentPanel">
+      <div class="col-sm-4 col-md-4 pb-2" *ngFor="let bookItem of books; let bookItemIndex = index">
+        <div class="card card-outline-info" id="{{bookItemIndex}}Panel" (click)="openModal(bookdetailtemplate,
+            bookItem.title,
+            bookItem.authors ? bookItem.authors[0] : '',
+            bookItem.publishedDate,
+            bookItem.subtitle)">
+          <div class="card-block">
+            <div class="card-title p-2">
+              <svg class="bd-placeholder-img card-img-top"
+                   xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap" >
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+                <text x="50%" y="50%" fill="#dee2e6">Image cap</text>
+              </svg>
+            </div>
+            <div class="card-body">
+              <p class="card-text text-center">{{ bookItem.title }}</p>
+              <p class="card-text text-center">{{ bookItem.authors ? bookItem.authors[0] : '' }} - {{ bookItem.publishedDate }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -50,7 +55,7 @@
       <div class="row mb-3">
         <div class="col-md">
           <p>
-            <svg class="bd-placeholder-img card-img-top" width="100" height="100"
+            <svg class="bd-placeholder-img card-img-top" width="150px" height="200px"
                  xmlns="http://www.w3.org/2000/svg"
                  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
               <title>Placeholder</title>
@@ -58,8 +63,8 @@
               <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
             </svg>
           </p>
-          <p>{{currentBook.title}}</p>
-          <p class="card-text">{{ currentBook.author }} - {{ currentBook.publishedDate }}</p>
+          <p class="card-text text-center">{{currentBook.title}}</p>
+          <p class="card-text text-center">{{ currentBook.author }} - {{ currentBook.publishedDate }}</p>
         </div>
         <div class="col-md">
           <p>{{currentBook.subtitle}}</p>
@@ -78,13 +83,13 @@
         <div class="col-12 text-center">
           <div class="btn-group btn-group-justified">
             <div class="btn-group">
-              <button type="button" class="btn btn-success">Motobike {{deliveryCosts.motorbike | currency}}</button>
+              <button type="button" class="btn btn-success" (click)="onSelectDeliveryType('motorbike', deliveryCosts.motorbike)">Motobike {{deliveryCosts.motorbike | currency}}</button>
             </div>
             <div class="btn-group">
-              <button type="button" class="btn btn-primary">Train {{deliveryCosts.train | currency}}</button>
+              <button type="button" class="btn btn-primary" (click)="onSelectDeliveryType('train', deliveryCosts.train)">Train {{deliveryCosts.train | currency}}</button>
             </div>
             <div class="btn-group">
-              <button type="button" class="btn btn-warning">Aircraft {{deliveryCosts.aircraft | currency}}</button>
+              <button type="button" class="btn btn-warning" (click)="onSelectDeliveryType('aircraft', deliveryCosts.aircraft)">Aircraft {{deliveryCosts.aircraft | currency}}</button>
             </div>
           </div>
         </div>
@@ -93,7 +98,7 @@
 
     </div>
   <div class="modal-footer text-center">
-    <button type="button" class="btn btn-danger btn-block" (click)="confirm()">Buy</button>
+    <button [disabled]="!buyBookModel.deliveryService" type="button" class="btn btn-danger btn-block" (click)="onBuyBook()">Buy</button>
   </div>
 </ng-template>
 

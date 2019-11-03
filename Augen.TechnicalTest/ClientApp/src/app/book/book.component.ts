@@ -15,6 +15,8 @@ export class BookComponent implements OnInit {
     public baseUrl: string;
     public currentBook: any;
     public deliveryCosts: any;
+    public buyBookModel: any;
+    public deliveryMessage: string;
 
     constructor(private http: HttpClient,
         private modalService: BsModalService,
@@ -35,9 +37,21 @@ export class BookComponent implements OnInit {
             train: 0,
             aircraft: 0,
         };
+        this.buyBookModel = {
+            deliveryService: '',
+            deliveryCost: 0
+        }
+    }
+
+    resetBuyBookModel() {
+        this.buyBookModel = {
+            deliveryService: '',
+            deliveryCost: 0
+        }
     }
 
     openModal(template: TemplateRef<any>, title: string, author: string, publishedDate: string, subtitle: string) {
+        this.resetBuyBookModel();
         this.http.get<DeliveryCosts>(this.baseUrl + 'api/delivery', {
         }).subscribe(result => {
             this.deliveryCosts = result;
@@ -52,6 +66,19 @@ export class BookComponent implements OnInit {
 
         this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
 
+    }
+
+    onSelectDeliveryType(deliveryService: string, deliveryCost: number) {
+        this.buyBookModel.deliveryService = deliveryService;
+        this.buyBookModel.deliveryCost = deliveryCost;
+    }
+
+    onBuyBook(){
+        this.modalRef.hide();
+
+        this.http.post<string>(this.baseUrl + 'api/bookstore', this.buyBookModel).subscribe(result => {
+            this.deliveryMessage = result;
+        }, error => console.error(error));
     }
 
     confirm(): void {

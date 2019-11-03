@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Augen.TechnicalTest.Helper;
 using Augen.TechnicalTest.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -53,5 +54,18 @@ namespace Augen.TechnicalTest.Controllers
 
             return new Book[] { };
         }
+
+        [HttpPost]
+        public string BuyBook(BuyBookModel model)
+        {
+            var driverName = DeliveryHelper.GenerateName(3);
+            var mobilePhone = DeliveryHelper.GetRandomTelNo();
+            var deliveryDate = DeliveryHelper.GetRandomDate();
+
+            var deliveryInfo = @"";
+
+            return "";
+        }
+
     }
 }
