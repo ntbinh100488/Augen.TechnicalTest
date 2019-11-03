@@ -4,7 +4,7 @@ namespace Augen.TechnicalTest.Services
 {
     public class TrainDeliveryInfo : DeliveryInfoBase
     {
-        public string TrainNo => DeliveryHelper.GenerateName();
+        public string TrainNo => DeliveryHelper.GenerateName().ToUpper();
         public string StationOfArrival => DeliveryHelper.GenerateName();
         public TrainDeliveryInfo(double cost)
         {

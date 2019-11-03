@@ -4,8 +4,8 @@ namespace Augen.TechnicalTest.Services
 {
     public class AirCraftDeliveryInfo : DeliveryInfoBase
     {
-        public string FlightNo => DeliveryHelper.GenerateName();
-        public string GateOfArrival => DeliveryHelper.GenerateName();
+        public string FlightNo => DeliveryHelper.GenerateName().ToUpper();
+        public string GateOfArrival => DeliveryHelper.GenerateFullName();
         public AirCraftDeliveryInfo(double cost)
         {
             Cost = cost;

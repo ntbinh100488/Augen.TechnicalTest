@@ -5,7 +5,7 @@ namespace Augen.TechnicalTest.Services
 {
     public class MotorbikeDeliveryInfo : DeliveryInfoBase
     {
-        public string DriverName => DeliveryHelper.GenerateName();
+        public string DriverName => DeliveryHelper.GenerateFullName();
         public string Mobile => DeliveryHelper.GetRandomTelNo();
         public MotorbikeDeliveryInfo(double cost)
         {
