@@ -27,7 +27,6 @@ namespace Augen.TechnicalTest.Controllers
         {
             using (var client = new HttpClient())
             {
-                //client.BaseAddress = new Uri("https://www.googleapis.com/books/v1/volumes?q={}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //GET Method  
@@ -35,14 +34,13 @@ namespace Augen.TechnicalTest.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var bookStr = await response.Content.ReadAsStringAsync();
-
                     var rootObject = JsonConvert.DeserializeObject<RootObject>(bookStr);
-
                     var books = rootObject.Items.Select(a => new Book
                     {
                         PublishedDate = a.VolumeInfo.PublishedDate,
                         Authors = a.VolumeInfo.Authors,
-                        Title = a.VolumeInfo.Title
+                        Title = a.VolumeInfo.Title,
+                        Subtitle = a.VolumeInfo.Subtitle
                     });
 
                     return books;
@@ -53,7 +51,7 @@ namespace Augen.TechnicalTest.Controllers
                 }
             }
 
-            return null;
+            return new Book[] { };
         }
     }
 }

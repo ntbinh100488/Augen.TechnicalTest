@@ -12,5 +12,6 @@ namespace Augen.TechnicalTest.Models
         public string Title { get; set; }
         public string[] Authors { get; set; }
         public string PublishedDate { get; set; }
+        public string Subtitle { get; set; }
     }
 }

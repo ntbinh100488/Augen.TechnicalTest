@@ -1,27 +1,14 @@
-﻿using System;
+﻿using Augen.TechnicalTest.Domain.Delivery;
+using System;
 
 namespace Augen.TechnicalTest.Services
 {
     public class TrainDelivery : DeliveryBase
     {
         public override DeliveryServiceTypes ServiceType => DeliveryServiceTypes.Train;
-        public override int BaseCost => 10;
-        public override double GetFactor()
-        {
-            var currentMonth = DateTime.Now.Month;
-
-            if (currentMonth >= 6 && currentMonth <= 8)
-            {
-                return 0.8;
-            }
-            else if (currentMonth == 9)
-            {
-                return 1.8;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        public override double BaseCost => DeliveryServiceConfiguration.TrainBaseCost;
+        public override double LowFactor => DeliveryServiceConfiguration.LowTrainFactor;
+        public override double HighFactor => DeliveryServiceConfiguration.HighTrainFactor;
+        public override double MediumFactor => DeliveryServiceConfiguration.MediumTrainFactor;
     }
 }

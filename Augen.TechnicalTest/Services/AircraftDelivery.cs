@@ -1,29 +1,14 @@
-﻿using System;
+﻿using Augen.TechnicalTest.Domain.Delivery;
+using System;
 
 namespace Augen.TechnicalTest.Services
 {
     public class AircraftDelivery : DeliveryBase
     {
         public override DeliveryServiceTypes ServiceType => DeliveryServiceTypes.Aircraft;
-
-        public override int BaseCost => 20;
-
-        public override double GetFactor()
-        {
-            var currentMonth = DateTime.Now.Month;
-
-            if (currentMonth >= 6 && currentMonth <= 8)
-            {
-                return 0.8;
-            }
-            else if (currentMonth == 9)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        public override double BaseCost => DeliveryServiceConfiguration.AircraftBaseCost;
+        public override double LowFactor => DeliveryServiceConfiguration.LowAircraftFactor;
+        public override double HighFactor => DeliveryServiceConfiguration.HighAircraftFactor;
+        public override double MediumFactor => DeliveryServiceConfiguration.MediumAircraftFactor;
     }
 }

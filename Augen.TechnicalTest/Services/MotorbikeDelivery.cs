@@ -1,27 +1,14 @@
-﻿using System;
+﻿using Augen.TechnicalTest.Domain.Delivery;
+using System;
 
 namespace Augen.TechnicalTest.Services
 {
     public class MotorbikeDelivery : DeliveryBase
     {
         public override DeliveryServiceTypes ServiceType => DeliveryServiceTypes.Motobike;
-        public override int BaseCost => 5;
-        public override double GetFactor()
-        {
-            var currentMonth = DateTime.Now.Month;
-
-            if (currentMonth >= 6 && currentMonth <= 8)
-            {
-                return 0.5;
-            }
-            else if (currentMonth == 9)
-            {
-                return 1.5;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        public override double BaseCost => DeliveryServiceConfiguration.MotorbikeBaseCost;
+        public override double LowFactor => DeliveryServiceConfiguration.LowMotorbikeFactor;
+        public override double HighFactor => DeliveryServiceConfiguration.HighMotorbikeFactor;
+        public override double MediumFactor => DeliveryServiceConfiguration.MediumMotorbikeFactor;
     }
 }
