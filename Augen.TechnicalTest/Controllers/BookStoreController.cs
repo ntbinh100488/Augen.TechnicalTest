@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Augen.TechnicalTest.Helper;
 using Augen.TechnicalTest.Models;
+using Augen.TechnicalTest.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -17,10 +18,12 @@ namespace Augen.TechnicalTest.Controllers
     public class BookStoreController : ControllerBase
     {
         private readonly ILogger<BookStoreController> _logger;
+        private readonly IDeliveryInfoGenerateService _deliveryInfoGenerateService;
 
-        public BookStoreController(ILogger<BookStoreController> logger)
+        public BookStoreController(ILogger<BookStoreController> logger, IDeliveryInfoGenerateService deliveryInfoGenerateService)
         {
             _logger = logger;
+            _deliveryInfoGenerateService = deliveryInfoGenerateService;
         }
 
         [HttpGet]
@@ -56,15 +59,11 @@ namespace Augen.TechnicalTest.Controllers
         }
 
         [HttpPost]
-        public string BuyBook(BuyBookModel model)
+        public JsonResult BuyBook(BuyBookModel model)
         {
-            var driverName = DeliveryHelper.GenerateName(3);
-            var mobilePhone = DeliveryHelper.GetRandomTelNo();
-            var deliveryDate = DeliveryHelper.GetRandomDate();
+            var deliveryInfo = _deliveryInfoGenerateService.GenerateInfo(model.DeliveryService, model.DeliveryCost);
 
-            var deliveryInfo = @"";
-
-            return "";
+            return new JsonResult(deliveryInfo);
         }
 
     }

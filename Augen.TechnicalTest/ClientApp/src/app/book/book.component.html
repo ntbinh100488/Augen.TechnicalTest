@@ -98,18 +98,18 @@
 
     </div>
   <div class="modal-footer text-center">
-    <button [disabled]="!buyBookModel.deliveryService" type="button" class="btn btn-danger btn-block" (click)="onBuyBook()">Buy</button>
+    <button [disabled]="!buyBookModel.deliveryService" type="button" class="btn btn-danger btn-block" (click)="onBuyBook(buybooktemplate)">Buy</button>
   </div>
 </ng-template>
 
-<ng-template #templatetwo>
+<ng-template #buybooktemplate>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Delivery Information</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    This is a modal.
+    {{deliveryMessage}}
   </div>
 </ng-template>

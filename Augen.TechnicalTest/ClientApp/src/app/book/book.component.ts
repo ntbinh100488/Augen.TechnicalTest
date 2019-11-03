@@ -73,12 +73,20 @@ export class BookComponent implements OnInit {
         this.buyBookModel.deliveryCost = deliveryCost;
     }
 
-    onBuyBook(){
+    onBuyBook(template){
         this.modalRef.hide();
 
-        this.http.post<string>(this.baseUrl + 'api/bookstore', this.buyBookModel).subscribe(result => {
-            this.deliveryMessage = result;
-        }, error => console.error(error));
+        this.http.post<string>(this.baseUrl + 'api/bookstore', this.buyBookModel)
+            .subscribe((val) => {
+                this.deliveryMessage = val;
+                this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
+            },
+            response => {
+                console.log("POST call in error", response);
+            },
+            () => {
+                console.log("The POST observable is now completed.");
+            });
     }
 
     confirm(): void {

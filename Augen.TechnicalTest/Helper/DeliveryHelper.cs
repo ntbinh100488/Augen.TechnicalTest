@@ -5,9 +5,10 @@ namespace Augen.TechnicalTest.Helper
 {
     public class DeliveryHelper
     {
-        public static string GenerateName(int len)
+        public static string GenerateName()
         {
             Random r = new Random();
+            int len = r.Next(1, 4);
             string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
             string[] vowels = { "a", "e", "i", "o", "u", "ae", "y" };
             string name = "";
