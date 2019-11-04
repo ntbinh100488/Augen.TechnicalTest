@@ -12,7 +12,7 @@ namespace Augen.TechnicalTest.Services
         }
         public override string GenerateInfo()
         {
-            return string.Format(@"Train no: {0} | Station of arrival: {1} | Date of arrival: {2} | Cost: {3}",
+            return string.Format(@"Train no: {0} | Station of arrival: {1} | Date of arrival: {2} | Cost: ${3}",
                 TrainNo,
                 StationOfArrival,
                 DeliveryDate.ToString("dd/MM/yyyy"),

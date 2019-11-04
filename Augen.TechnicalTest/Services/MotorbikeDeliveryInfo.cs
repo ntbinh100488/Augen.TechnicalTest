@@ -13,7 +13,7 @@ namespace Augen.TechnicalTest.Services
         }
         public override string GenerateInfo()
         {
-            return string.Format(@"Driver name: {0} | Mobile: {1} | Delivery date: {2} | Cost: {3}", 
+            return string.Format(@"Driver name: {0} | Mobile: {1} | Delivery date: {2} | Cost: ${3}", 
                 DriverName, 
                 Mobile, 
                 DeliveryDate.ToString("dd/MM/yyyy"), 
