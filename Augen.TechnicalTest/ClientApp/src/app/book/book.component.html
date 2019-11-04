@@ -16,7 +16,7 @@
 
   <div class="container">
     <div class="row" id="contentPanel">
-      <div class="col-sm-4 col-md-4 pb-2" *ngFor="let bookItem of books; let bookItemIndex = index">
+      <div class="col-sm-12 col-md-6 col-lg-4 pb-2" *ngFor="let bookItem of books; let bookItemIndex = index">
         <div class="card card-outline-info" id="{{bookItemIndex}}Panel" (click)="openModal(bookdetailtemplate,
             bookItem.title,
             bookItem.authors ? bookItem.authors[0] : '',
@@ -53,7 +53,7 @@
   <div class="modal-body">
     <div class="container">
       <div class="row mb-3">
-        <div class="col-md">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <p>
             <svg class="bd-placeholder-img card-img-top" width="150px" height="200px"
                  xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@
           <p class="card-text text-center">{{currentBook.title}}</p>
           <p class="card-text text-center">{{ currentBook.author }} - {{ currentBook.publishedDate }}</p>
         </div>
-        <div class="col-md">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <p>{{currentBook.subtitle}}</p>
         </div>
       </div>
