@@ -31,5 +31,12 @@ steps:
 - task: VSTest@2
   inputs:
     command: test
-    projects: '**/*Test.Augen.TechnicalTest/*.csproj'
+    projects: '**/*Test/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- script: dotnet test Test.Augen.TechnicalTest --logger trx
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'

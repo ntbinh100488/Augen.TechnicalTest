@@ -1,10 +1,9 @@
 using NUnit.Framework;
 
-namespace Test.Augen.TechnicalTest
+namespace Augen.TechnicalTest.Test
 {
     public class Tests
     {
-
         [SetUp]
         public void Setup()
         {
@@ -15,7 +14,6 @@ namespace Test.Augen.TechnicalTest
         {
             Assert.Pass();
         }
-
         [Test]
         public void Test2()
         {
