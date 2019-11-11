@@ -31,5 +31,5 @@ steps:
 - task: VSTest@2
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    projects: '**/*Test.Augen.TechnicalTest/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
