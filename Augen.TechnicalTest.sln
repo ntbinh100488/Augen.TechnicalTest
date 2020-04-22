@@ -7,20 +7,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Augen.TechnicalTest", "Auge
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5A63EDC6-F898-4BCF-A962-88E333B0F8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augen.TechnicalTest.Test", "Test\Augen.TechnicalTest.Test\Augen.TechnicalTest.Test.csproj", "{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Augen.TechnicalTest.Test", "Test\Augen.TechnicalTest.Test\Augen.TechnicalTest.Test.csproj", "{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Production|Any CPU = Production|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Production|Any CPU.Build.0 = Production|Any CPU
 		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72FACA6D-8091-4380-81E7-2E7C834C81EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Production|Any CPU.Build.0 = Production|Any CPU
 		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1875315F-F8EE-4C45-95A9-0DC2DD6CE337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
